@@ -76,7 +76,7 @@ Many many tools and tweaks for your convenience:
   - bower: `npm install --global bower` - http://bower.io/
 - Sass
   - ruby - https://www.ruby-lang.org/en/installation/
-  - sass - http://sass-lang.com/install
+  - sass >= 3.4 - http://sass-lang.com/install
 - Want to test your app on a device ? - Then you'll need:
   - Platform SDKs for cordova
     - cordova documentation: [http://cordova.apache.org/docs/en/edge/guide_platforms_index.md.html#Platform%20Guides)

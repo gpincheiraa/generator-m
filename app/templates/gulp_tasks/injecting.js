@@ -36,16 +36,15 @@ gulp.task('inject-all', ['styles', 'wiredep', 'bower-fonts', 'environment', 'bui
 // build styles to tmp
 gulp.task('styles', function () {
   // compile css starting from each module's main.scss
-  return gulp.src('app/*/styles/main.scss')
+  return $.rubySass('app/*/styles/main.scss')
+    .on('error', function (err) {
+      console.error('Error!', err.message);
+    })
     .pipe($.plumber())
-    .pipe($.rubySass({
-      style: 'expanded',
-      precision: 10,
-      'sourcemap=none': true // disable sourcemap to avoid unknown word error
-      // TODO: issue (should be fixed when 1.0.0 is stable: https://github.com/sindresorhus/gulp-autoprefixer/issues/20
-      // solution: http://stackoverflow.com/questions/26979433/gulp-with-gulp-ruby-sass-error-style-css-map31-unknown-word
+    .pipe($.autoprefixer({
+      browsers: ['last 2 versions'],
+      remove: false
     }))
-    .pipe($.autoprefixer({ browsers: ['last 2 versions'], remove: false}))
     .pipe(gulp.dest('.tmp/'));
 });
 
